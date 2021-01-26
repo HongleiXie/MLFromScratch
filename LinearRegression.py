@@ -33,24 +33,15 @@ def step_gradient(b_current, m_current, points, learning_rate):
 	return [new_b, new_m]
 
 
-
-def gradient_descent_runner(points, initial_m, initial_b, learning_rate, num_iterations):
-	b = initial_b
-	m = initial_m
-
-	for i in range(num_iterations):
-		b,m = step_gradient(b, m, array(points), learning_rate)
-	return [b,m]
-
 # determine when the search finds a solution
-def gradient_descent_runner2(points, initial_m, initial_b, learning_rate, max_num_iter, tol = 1e-3):
+def gradient_descent_runner(points, initial_m, initial_b, learning_rate, max_num_iter, tol = 1e-3):
 	b = initial_b
 	m = initial_m
 	num_iter = 0
 	new_error = 0
 	old_error = compute_error(initial_b, initial_m, points)
 	tot_error = 999
-	while (tot_error > tol or num_iter > max_num_iter):
+	while (tot_error > tol and num_iter < max_num_iter):
 		num_iter = num_iter + 1
 		new_b, new_m = step_gradient(b, m, array(points), learning_rate)
 		old_error = compute_error(b, m, points)
@@ -60,15 +51,13 @@ def gradient_descent_runner2(points, initial_m, initial_b, learning_rate, max_nu
 		m = new_m
 	return [new_b, new_m, num_iter]
 
-# programming tip: be careful about the return statement indentation place, could result in unexpected results
-
 
 def run():
-	os.chdir('/Users/Honglei/Desktop/linear_regression_live-master/')
-	points = genfromtxt('data.csv', delimiter=',')
+	os.chdir('/some_dir/')
+	points = np.genfromtxt('data.csv', delimiter=',')
 
 	learning_rate = 0.0001
-	#y = mx + b
+	# y = mx + b
 	initial_b = 0
 	initial_m = 0
 	num_iterations = 1000
@@ -77,11 +66,7 @@ def run():
 	print ("Starting gradient descent at b = {0}, m = {1}, error = {2}".format(initial_b, initial_m, compute_error(initial_b, initial_m, points)))
 	print ("Running...")
 
-	#[b, m] = gradient_descent_runner(points, initial_m, initial_b, learning_rate, num_iterations)
-	#print ("After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iterations, b, m, compute_error(b, m, points)))
-
-	#better way to put it
-	[final_b, final_m, num_iter] = gradient_descent_runner2(points, initial_m, initial_b, learning_rate, num_iterations)
+	[final_b, final_m, num_iter] = gradient_descent_runner(points, initial_m, initial_b, learning_rate, num_iterations)
 	print ("After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iter, final_b, final_m, compute_error(final_b, final_m, points)))
 
 
