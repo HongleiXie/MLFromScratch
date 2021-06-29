@@ -5,3 +5,4 @@
 - Logistic regression
 - Multiple Layer Perceptron (MLP)
 - KNN
+- Kmeans
