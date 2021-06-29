@@ -3,4 +3,5 @@
 ## Added
 - Linear regression by gradient descent
 - Logistic regression
+- Multiple Layer Perceptron (MLP)
 - KNN
