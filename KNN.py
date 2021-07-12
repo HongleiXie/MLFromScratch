@@ -27,7 +27,7 @@ class KNNBase(object):
         y_pred = np.zeros(X_test.shape[0], dtype=y_train.dtype)
 
         for i, test_sample in enumerate(X_test):
-            idx = np.argsort(distance_func(test_sample, x) for x in X_train)[:self.k]
+            idx = np.argsort(self.distance_func(test_sample, x) for x in X_train)[:self.k]
             neighbors_targets = np.array([y_train[i] for i in idx])
             y_pred[i] = self._vote(neighbors_targets)
 
