@@ -6,3 +6,4 @@
 - Multiple Layer Perceptron (MLP)
 - KNN
 - Kmeans
+- LeNet
