@@ -7,3 +7,7 @@
 - KNN
 - Kmeans
 - LeNet
+- AlexNet
+- VGG
+- Inception
+- ResNet
