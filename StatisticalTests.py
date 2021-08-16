@@ -69,5 +69,8 @@ if __name__ == '__main__':
 
     x1 = np.random.randn(500)
     x2 = np.random.randn(500)
+    # testing for two proportions
+    #x1 = np.random.binomial(n=1,p=0.4,size=100)
+    #x2 = np.random.binomial(n=1,p=0.5,size=100)
     stat, p = two_sided_test(x1, x2, 'z_test')
     print(f'Performing Z-test, the statistic is {stat} and p-value is {p}')
