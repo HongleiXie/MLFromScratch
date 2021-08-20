@@ -11,3 +11,4 @@
 - VGG
 - Inception
 - ResNet
+- Statistical tests including t-test and z-test
